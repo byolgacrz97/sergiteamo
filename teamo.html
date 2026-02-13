@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Regalo para Sergi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+body{
+background:#111;
+color:#f9f9f9;
+font-family:'VT323',monospace;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+#particles{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+pointer-events:none;
+z-index:0;
+}
+
+#out-all{
+position:relative;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1;
+}
+
+.escena{
+position:absolute;
+width:90%;
+max-width:600px;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:rgba(17,17,17,0.95);
+padding:20px;
+border-radius:15px;
+border:2px solid #ff60b4;
+animation:fadeZoom .6s ease;
+}
+
+#f1{display:flex;}
+
+@keyframes fadeZoom{
+from{opacity:0;transform:scale(.95);}
+to{opacity:1;transform:scale(1);}
+}
+
+.btn-game{
+font-size:25px;
+margin:10px;
+cursor:pointer;
+color:#f9f9f9;
+border:1px solid #ff60b4;
+padding:5px 15px;
+border-radius:10px;
+background:none;
+transition:.3s;
+font-family:'VT323',monospace;
+}
+
+.btn-game:hover{
+background:#ff60b4;
+transform:scale(1.1);
+}
+
+.typewriter{
+overflow:hidden;
+border-right:.15em solid #fff;
+white-space:nowrap;
+animation:typing 3s steps(40,end),blink .75s step-end infinite;
+}
+
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+.img1{
+width:150px;height:150px;
+background:url(https://i.imgur.com/QLrOZMR.png) center/contain no-repeat;
+margin-bottom:10px;
+}
+
+.ring{
+width:120px;height:120px;
+background:url(https://i.imgur.com/oEs8TdL.png) center/contain no-repeat;
+}
+
+#f7{
+position:absolute;
+width:100%;
+height:100%;
+background:url(https://i.imgur.com/kx3psEN.png) center/cover no-repeat;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.contenedor-cofres{display:flex;gap:30px;margin-top:100px;}
+
+.box{
+width:100px;height:100px;
+background:url(https://i.imgur.com/ViqP2fB.png) center/contain no-repeat;
+cursor:pointer;
+animation:glow 2s infinite alternate;
+transition:.3s;
+}
+
+.box:hover{
+background-image:url(https://i.imgur.com/FIrcwmM.png);
+transform:scale(1.1);
+}
+
+@keyframes glow{
+from{filter:drop-shadow(0 0 5px pink);}
+to{filter:drop-shadow(0 0 20px #ff60b4);}
+}
+
+.shake{animation:shake .4s;}
+@keyframes shake{
+0%{transform:translate(2px,2px);}
+25%{transform:translate(-2px,0);}
+50%{transform:translate(2px,-2px);}
+75%{transform:translate(-2px,2px);}
+100%{transform:translate(0,0);}
+}
+
+.texto-carta{
+font-size:22px;
+text-align:justify;
+max-height:300px;
+overflow-y:auto;
+padding:10px;
+}
+
+.logro{
+position:fixed;
+top:20px;
+right:20px;
+background:#ff60b4;
+padding:15px;
+border-radius:10px;
+display:none;
+font-size:20px;
+z-index:10;
+}
+
+#f22{
+animation:finalGlow 2s ease forwards;
+}
+
+@keyframes finalGlow{
+from{opacity:0;transform:scale(.8);}
+to{opacity:1;transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div class="logro" id="logro">🏆 Logro desbloqueado: Amor eterno</div>
+
+<div id="out-all">
+
+<!-- ESCENAS ORIGINALES COMPLETAS -->
+
+<div id="f1" class="escena">
+<h1 class="typewriter">¿así que quieres participar en esta aventura?</h1>
+<div class="decidir">
+<button class="btn-game si">> si!</button>
+<button class="btn-game no">> no</button>
+</div>
+</div>
+
+<div id="f2" class="escena">
+<h1 class="typewriter">¡vamos, será divertido! ven conmigo.</h1>
+<div class="decidir">
+<button class="btn-game weno">> weno...</button>
+</div>
+</div>
+
+<div id="f3" class="escena">
+<h1 class="typewriter">¡pero ponle un poco más de ganas!</h1>
+<div class="decidir">
+<button class="btn-game dale">> ¡llévame!</button>
+</div>
+</div>
+
+<div id="f4" class="escena">
+<h3>¡VALE, VALE, NO ME GRITES! Pero debo decirte algo...</h3>
+<h2 class="typewriter">Te mentí, es un regalo.</h2>
+<div class="decidir">
+<button class="btn-game rega">> ¿un regalo?</button>
+</div>
+</div>
+
+<div id="f5" class="escena">
+<h1 class="typewriter">ahora, cierra los ojos, vamos a comenzar.</h1>
+<div class="decidir">
+<button class="btn-game ojo">> /cerrar los ojos</button>
+</div>
+</div>
+
+<div id="f6" class="escena">
+<div class="img1"></div>
+<h3>¡este eres tú! un mini sergi.</h3>
+<div class="decidir">
+<button class="btn-game afi">> ¡p-pero! /todo comienza a temblar</button>
+</div>
+</div>
+
+<div id="f7">
+
+<div id="f8" class="escena" style="display:flex;background:none;border:none;">
+<h1 class="typewriter">¡uhhhh! que emoción. ¡hola!</h1>
+<div class="decidir"><button class="btn-game salu">> ¿hola?</button></div>
+</div>
+
+<div id="f9" class="escena" style="background:none;border:none;">
+<h1>Tu amada Olga te ha traído 3 cofres... izq a derecha* </h1>
+<div id="contador"></div>
+<div class="decidir"><button class="btn-game copy">> ver los cofres</button></div>
+</div>
+
+<div id="f10" class="contenedor-cofres" style="display:none;">
+<div class="box ca1"></div>
+<div class="box ca3"></div>
+<div class="box ca2"></div>
+</div>
+
+</div>
+
+<!-- COFRE 1 ORIGINAL COMPLETO -->
+<div id="f12" class="escena">
+
+<div id="f13">
+<h1>reproduce esta canción antes de leer</h1>
+<div class="decidir">
+<a href="https://www.youtube.com/watch?v=2JlpEA0YjsA" target="_blank" class="btn-game">> abrir música</a>
+<button class="btn-game go">> seguir leyendo</button>
+</div>
+</div>
+
+<div id="f14" style="display:none;">
+<div class="texto-carta">
+Si alguien me hubiera preguntado 4 años atrás si alguna vez pensaba enamorarme, me habría reído en su cara...
+
+<br><br>
+
+No miento cuando digo que eres mi todo, mi amor. Agradezco cada día que hayas llegado a mi vida.
+Siento si esperabas algo físico, pero he puesto todo mi esfuerzo en que te guste este detallito,
+a pesar de todas las cosas que se pueden mejorar y ya que no tengo ni idea de programación, pero con chatgpt, gemini y youtube se puede llegar muy lejos. También espero que te inspire a ser el mejor programador,
+te apoyo en todo tu proceso y lo que es importante para ti es importante para mí. Espero que te guste y te haya hecho ilusión <3
+Te amo fins la lluna :)
+</div>
+<button class="btn-game volver">> volver a los cofres</button>
+</div>
+
+</div>
+
+<!-- COFRE ANILLOS -->
+<div id="f15" class="escena">
+<div class="ring"></div>
+<h3>¡has encontrado los anillos!</h3>
+<div class="decidir"><button class="btn-game volver">> guardarlos</button></div>
+</div>
+
+<!-- COFRE FINAL -->
+<div id="f18" class="escena">
+<div id="f19">
+<h2>¿quieres seguir siendo mi novio?</h2>
+<div class="decidir">
+<button class="btn-game yes">> ¡SIIII!</button>
+<button class="btn-game yes">> ¡SIIII EN ROSA!</button>
+</div>
+</div>
+<div id="f22" style="display:none;">
+<p>Te amo, Sergi. El único final que quiero es uno feliz a tu lado. ❤️</p>
+</div>
+</div>
+
+</div>
+
+<audio id="bgmusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d2f4f6c1.mp3?filename=beautiful-piano-ambient-110624.mp3">
+</audio>
+
+<audio id="rumble">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_9c4a5c7c52.mp3?filename=earthquake-rumble-109915.mp3">
+</audio>
+
+<script>
+$(document).ready(function(){
+
+function trans(a,b){
+$(a).fadeOut(400,function(){
+$(b).fadeIn(600).css("display","flex");
+});
+}
+
+$('.si').click(function(){
+document.getElementById("bgmusic").play();
+trans('#f1','#f3');
+});
+$('.no').click(function(){trans('#f1','#f2');});
+$('.weno').click(function(){trans('#f2','#f1');});
+$('.dale').click(function(){trans('#f3','#f4');});
+$('.rega').click(function(){trans('#f4','#f5');});
+$('.ojo').click(function(){trans('#f5','#f6');});
+
+$('.afi').click(function(){
+document.getElementById("rumble").play();
+$('body').addClass('shake');
+setTimeout(function(){$('body').removeClass('shake');},400);
+$('#f6').fadeOut(400,function(){
+$('#f7').fadeIn(600).css("display","flex");
+$('#f8').show();
+});
+});
+
+$('.salu').click(function(){trans('#f8','#f9');});
+$('.copy').click(function(){
+$('#f9').fadeOut(400,function(){
+$('#f10').fadeIn().css("display","flex");
+});
+});
+
+$('.ca1').click(function(){trans('#f7','#f12');});
+$('.ca3').click(function(){trans('#f7','#f15');});
+$('.ca2').click(function(){trans('#f7','#f18');});
+
+$('.go').click(function(){
+$('#f13').hide();
+$('#f14').fadeIn();
+});
+
+$('.volver').click(function(){
+$('.escena').hide();
+$('#f7').show();
+$('#f10').show();
+$('#f13').show();
+$('#f14').hide();
+});
+
+$('.yes').click(function(){
+$('#f19').hide();
+$('#f22').fadeIn();
+
+$('#logro').fadeIn();
+setTimeout(function(){$('#logro').fadeOut();},4000);
+
+for(let i=0;i<30;i++){
+let heart=$('<div>❤️</div>');
+heart.css({
+position:'fixed',
+left:Math.random()*100+'%',
+top:'100%',
+fontSize:(20+Math.random()*20)+'px',
+animation:'floatUp 4s linear forwards',
+zIndex:10
+});
+$('body').append(heart);
+setTimeout(function(){heart.remove();},4000);
+}
+});
+
+$('<style>').html(`
+@keyframes floatUp {
+from { transform: translateY(0); opacity:1; }
+to { transform: translateY(-100vh); opacity:0; }
+}`).appendTo('head');
+
+/* CONTADOR DESDE 02/09/2022 */
+let inicio = new Date("2022-09-02");
+function actualizarContador(){
+let ahora = new Date();
+let años = ahora.getFullYear() - inicio.getFullYear();
+let meses = ahora.getMonth() - inicio.getMonth();
+let dias = ahora.getDate() - inicio.getDate();
+if(dias<0){
+meses--;
+dias+=new Date(ahora.getFullYear(),ahora.getMonth(),0).getDate();
+}
+if(meses<0){
+años--;
+meses+=12;
+}
+$('#contador').html(
+`Lleváis <span style="color:#ff60b4">${años} años, ${meses} meses y ${dias} días</span> de aventura juntos ❤️`
+);
+}
+actualizarContador();
+setInterval(actualizarContador,86400000);
+
+/* PARTICULAS */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<60;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*1
+});
+}
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,96,180,0.6)";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=p.d;
+if(p.y>canvas.height){p.y=0;}
+});
+requestAnimationFrame(draw);
+}
+draw();
+
+});
+</script>
+
+</body>
+</html>
